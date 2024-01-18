@@ -9,6 +9,8 @@ import orderRoutes from './routes/orderRoutes';
 import { sendCronMail } from './controllers/sendMailController';
 import Product from "./db/productModel";
 import cron from 'node-cron';
+import swaggerUi from "swagger-ui-express";
+import swaggerSpecs from './swagger/swagger';
 
 dotenv.config();
 const app = express();
@@ -17,6 +19,7 @@ app.use(express.Router());
 app.use(express.urlencoded({extended : true}));
 app.use(cookieParser());
 app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }))
+app.use("/api-docs" , swaggerUi.serve , swaggerUi.setup(swaggerSpecs));
 
 
 app.use("/api", authRoute);

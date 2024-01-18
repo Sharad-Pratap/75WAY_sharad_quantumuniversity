@@ -6,7 +6,7 @@ import mongoose, { Schema, Document, Types } from 'mongoose';
 export interface IOrder extends Document {
   product: mongoose.Schema.Types.String;
   quantity: number;
-  user: mongoose.Schema.Types.ObjectId;
+  user: mongoose.Schema.Types.ObjectId;  //! check for future reference here objectId is written
 }
 
 const orderSchema = new Schema<IOrder>({
